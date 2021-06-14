@@ -1,0 +1,84 @@
+{% extends "layout.njk" %}
+{% block styles %}
+<link rel="stylesheet" href="/styles/equipaments.css">
+{% endblock %}
+
+{% block content %}
+{% if error %}
+<p>{{error}}</p>
+{% endif %}
+<div class="container-form">
+  <div class="text-info">
+    <h2>Informações sobre o equipamento</h2>
+  </div>
+  <div class="form-content">
+    <form action="/equipaments/new-equipament" method="POST" id="new-equipament">
+      <div class="field-one-line">
+        <label for="name"> Nome do Equipamento</label>
+        <input type="text" name="name" />
+      </div>
+      <!-- -->
+      <div class="field-two-line">
+        <div class="field-one-line">
+          <label for="serial_number">Número de Série</label>
+          <input type="text" name="serial_number" />
+        </div>
+        <div class="field-one-line">
+          <label for="price">Preço</label>
+          <input type="number" name="price" />
+        </div>
+      </div>
+      <!-- -->
+      <div class="field-two-line">
+        <div class="field-one-line">
+          <label for="category">Categoria</label>
+          <select name="category" id="categories">
+            <option value=""></option>
+            {% for category in categories %}
+            <option value={{category.id}}>{{category.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="field-one-line">
+          <label for="status">Status</label>
+          <select name="status" id="status">
+            <option value=""></option>
+            {% for item in status %}
+            <option value={{item.id}}>{{item.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <!-- -->
+      <div class="field-two-line">
+        <div class="field-one-line">
+          <label for="company">Empresa</label>
+          <select name="company" id="company" onchange="FindLocale()" >
+            <option value=""></option>
+            {% for company in companies %}
+            <option value={{company.id}}>{{company.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="field-one-line">
+          <label for="locale">Localidade</label>
+          <select name="locale" id="locale">
+            <option value=""></option>
+          </select>
+          <select id="locales-data" style="display: none;">
+            {% for locale in locales %}
+            <option  data-company={{locale.company_id}} value={{locale.id}}>{{locale.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <!-- -->
+
+    </form>
+    <div class="container-buttons">
+      <button>Cancelar</button>
+      <button class="button-save" form="new-equipament" type="submit">Cadastrar</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

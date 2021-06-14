@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Inventário NTI</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  {% block styles %}
+  {% endblock %}
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-menu">
+      <div class="menu">
+        <a href="/equipaments">Equipamentos</a>
+        <a href="/equipaments/new-equipament">Novo Equipamento</a>
+      </div>
+      <div class="user-menu">
+        <a href="/accounts/logout" class="button-exit">Sair</a>
+      </div>
+    </div>
+    <div class="header-title">
+      <p>{{title}}</p>
+    </div>
+  </header>
+  <div class="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <script src="/scripts/scripts.js"></script>
+</body>
+
+</html>

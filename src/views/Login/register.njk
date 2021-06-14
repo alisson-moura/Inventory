@@ -1,0 +1,27 @@
+{% extends "Login/layout.njk" %}
+{% block head %}
+<title>Inventory - Cadastrar</title>
+{% endblock head %}
+
+{% block content %}
+{% if error %} 
+  <div class="error-container">
+    <span>
+      {{error}}
+    </span>
+  </div>
+{% endif %}
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" action="/accounts/register" method="POST">
+      <input type="text" placeholder="Nome" name="name"/>
+      <input type="text" placeholder="Crachá" name="code"/>
+      <input type="text" placeholder="E-mail" name="email"/>
+      <input type="password" placeholder="Senha" name="password"/>
+      <input type="password" placeholder="Confirmar Senha" name="confirmPassword"/>
+      <button type="submit">Criar Conta</button>
+      <p class="message">Já possui uma conta? <a href="/">Entrar</a></p>
+    </form>
+  </div>
+</div>
+{% endblock content %}

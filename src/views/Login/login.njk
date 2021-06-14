@@ -1,0 +1,17 @@
+{% extends "Login/layout.njk" %}
+{% block head %}
+<title>Inventory - Login</title>
+{% endblock head %}
+
+{% block content %}
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" method="POST" action="/accounts">
+      <input type="text" placeholder="E-mail" name="email"/>
+      <input type="password" placeholder="Senha" name="password"/>
+      <button>Entrar</button>
+      <p class="message"><a href="/accounts/register">Criar conta</a></p>
+    </form>
+  </div>
+</div>
+{% endblock content %}
