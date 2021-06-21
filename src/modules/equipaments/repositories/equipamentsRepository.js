@@ -21,12 +21,14 @@ module.exports = {
     return result
   },
 
-  async findAll(limit, offset) {
+  async findAll(limit, page = 1) {
     if (!limit) {
       limit = 20
     }
+    const offset = limit * (page - 1)
+    const [total] = await db.query(`Select count(*) from equipaments`)
     const query = `SELECT * FROM equipaments LIMIT ${limit}`
     const result = await db.query(query)
-    return result
+    return {total: total.count, result}
   }
 }

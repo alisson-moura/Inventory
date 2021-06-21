@@ -7,8 +7,9 @@ const statusRepository = require('../repositories/statusRepository')
 
 module.exports = {
   async index(req, res) {
-    const equipaments = await equipamentRepository.findAll(20)
-    res.render('Equipaments/equipaments.njk', {title: 'Equipamentos', equipaments})
+    const {page} = req.query
+    const {result, total} = await equipamentRepository.findAll(20, page)
+    res.render('Equipaments/equipaments.njk', {title: 'Equipamentos', equipaments: result, total})
   },
 
   async store(req, res) {
