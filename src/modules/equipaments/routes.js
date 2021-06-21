@@ -4,9 +4,7 @@ const equipamentController = require('./controllers/equipamentController')
 
 const equipamentsRouter = Router()
 
-equipamentsRouter.get('/', ensureAuthenticated, (req, res) => {
-  res.render('Equipaments/equipaments.njk', {title: 'Equipamentos'})
-})
+equipamentsRouter.get('/', ensureAuthenticated, equipamentController.index)
 
 equipamentsRouter.get('/new-equipament', ensureAuthenticated, equipamentController.getNewEquipamentPage)
 

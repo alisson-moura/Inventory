@@ -1,11 +1,16 @@
 const Joi = require('joi')
 const categoriesRepository = require('../repositories/categoriesRepository')
 const companiesRepository = require('../repositories/companiesRepository')
-const equipamentRepository = require('../repositories/equipamentRepository')
+const equipamentRepository = require('../repositories/equipamentsRepository')
 const localesRepository = require('../repositories/localesRepository')
 const statusRepository = require('../repositories/statusRepository')
 
 module.exports = {
+  async index(req, res) {
+    const equipaments = await equipamentRepository.findAll(20)
+    res.render('Equipaments/equipaments.njk', {title: 'Equipamentos', equipaments})
+  },
+
   async store(req, res) {
     const {name, serial_number, price, category, status, company, locale} = req.body
     

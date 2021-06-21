@@ -1,4 +1,29 @@
 {% extends  "layout.njk" %}
 {% block  content %}
-  <h1>{{message}}</h1>
+    <table>
+      <thead>
+        <tr>
+          <td>Nome do Equipamento</td>
+          <td>Nº de Série</td>
+          <td>Categoria</td>
+          <td>Status</td>
+          <td>Empresa</td>
+          <td>Local</td>
+          <td>Preço</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for equipament in equipaments %}
+          <tr>
+            <td>{{equipament.name}}</td>
+            <td>{{equipament.serial_number}}</td>
+            <td>{{equipament.category_id}}</td>
+            <td>{{equipament.status_id}}</td>
+            <td>{{equipament.company_id}}</td>
+            <td>{{equipament.locale_id}}</td>
+            <td>{{equipament.price}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 {% endblock %}

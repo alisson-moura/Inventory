@@ -19,5 +19,14 @@ module.exports = {
     `
     const [result] = await db.query(query, [name, serial_number])
     return result
+  },
+
+  async findAll(limit, offset) {
+    if (!limit) {
+      limit = 20
+    }
+    const query = `SELECT * FROM equipaments LIMIT ${limit}`
+    const result = await db.query(query)
+    return result
   }
 }
